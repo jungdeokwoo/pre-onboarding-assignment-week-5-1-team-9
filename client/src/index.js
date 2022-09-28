@@ -4,11 +4,14 @@ import App from './App'
 import GlobalStyle from 'styles/GlobalStyle'
 import { ThemeProvider } from 'styled-components'
 import theme from 'styles/Theme'
+import SearchContext from 'store/searchStore'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    <App />
+    <SearchContext>
+      <GlobalStyle />
+      <App />
+    </SearchContext>
   </ThemeProvider>,
 )
