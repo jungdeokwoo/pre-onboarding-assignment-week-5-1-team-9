@@ -6,13 +6,13 @@ export const cachingSearchResult = async text => {
     if (responsedCache) {
       return responsedCache
     } else {
-      console.info('api')
       const response = await fetch(searchURL)
+      console.info('api')
       await cacheStorage.put(searchURL, response)
       const responsedCache = await cacheStorage.match(searchURL)
       return responsedCache
     }
   } catch (e) {
-    console.log(e)
+    console.alert('다시 접속해 주세요')
   }
 }

@@ -1,16 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import SearchInputSection from 'components/SearchInputSection'
-import SearchResultSection from 'components/SearchResultSection'
-import { cachingSearchResult } from 'service/SearchService'
 
 const App = () => {
-  useEffect(() => {
-    cachingSearchResult('간')
-      .then(res => res.json())
-      .then(res => console.log(res))
-  }, [])
-
   return (
     <SearchContainer>
       <SearchTitleWrapper>
@@ -18,7 +10,6 @@ const App = () => {
         <SearchTitle>온라인으로 참여하기</SearchTitle>
       </SearchTitleWrapper>
       <SearchInputSection />
-      <SearchResultSection />
     </SearchContainer>
   )
 }
@@ -33,10 +24,11 @@ const SearchContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 600px;
-  height: 500px;
+  min-height: 500px;
   padding: 30px;
   background-color: ${({ theme }) => theme.mainBox};
   transform: translate(-50%, -50%);
+  outline: none;
 `
 
 const SearchTitleWrapper = styled.div`
@@ -50,10 +42,4 @@ const SearchTitle = styled.h1`
   display: flex;
   justify-content: center;
   ${({ theme }) => theme.headerFont};
-`
-
-const SearchInputWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  margin-top: 30px;
 `
