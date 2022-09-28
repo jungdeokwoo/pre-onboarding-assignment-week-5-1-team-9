@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import SearchInputSection from 'components/SearchInputSection'
 import SearchResultSection from 'components/SearchResultSection'
+import { cachingSearchResult } from 'service/SearchService'
 
 const App = () => {
+  useEffect(() => {
+    cachingSearchResult('간')
+      .then(res => res.json())
+      .then(res => console.log(res))
+  }, [])
+
   return (
     <SearchContainer>
       <SearchTitleWrapper>
